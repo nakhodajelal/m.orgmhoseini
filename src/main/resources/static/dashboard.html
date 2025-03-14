@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>داشبورد مدیر</title>
+</head>
+<body>
+<div class="container">
+    <h2>داشبورد مدیر</h2>
+
+    <h3>کاربران در انتظار تایید:</h3>
+    <table id="pendingUsersTable">
+        <thead>
+        <tr>
+            <th>نام کاربری</th>
+            <th>وضعیت</th>
+            <th>عملیات</th>
+        </tr>
+        </thead>
+        <tbody id="pendingUsersList">
+        <!-- ردیف‌های کاربران به‌صورت داینامیک اینجا اضافه می‌شود -->
+        </tbody>
+    </table>
+
+    <h3>مدیریت دوره‌ها:</h3>
+    <div id="coursesList"></div>
+
+    <!-- فرم اضافه کردن دوره -->
+    <h3>اضافه کردن دوره جدید</h3>
+    <form id="addCourseForm">
+        <label for="courseName">عنوان دوره:</label>
+        <input type="text" id="courseName" required>
+
+        <label for="courseStartDate">تاریخ شروع:</label>
+        <input type="date" id="courseStartDate" required>
+
+        <label for="courseEndDate">تاریخ پایان:</label>
+        <input type="date" id="courseEndDate" required>
+
+        <button type="submit">اضافه کردن دوره</button>
+    </form>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
