@@ -60,6 +60,22 @@ public class ExamServiceImpl implements IExamService {
         examRepository.deleteById(examId);
     }
 
+    //phase E:View the list of participants and test scores
+    public List<StudentExamResultDTO> getExamResults(Long examId) {
+        List<ExamSession> sessions = examSessionRepository.findByExamIdAndIsFinishedTrue(examId);
+        return sessions.stream()
+                .map(session -> new StudentExamResultDTO(
+                        session.getStudent().getFirstName() + " " + session.getStudent().getLastName(),
+                        session.getAnswers() != null ?
+                                session.getAnswers().stream().filter(a -> a.getScore() != null).mapToDouble(StudentAnswer::getScore).sum()
+                                : 0.0,
+                        session.getAnswers() != null ?
+                                session.getAnswers().stream().filter(a -> a.getManualScore() != null).mapToDouble(a -> a.getManualScore()).sum()
+                                : 0.0
+                ))
+                .collect(Collectors.toList());
+
+    }
 
 
 }

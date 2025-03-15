@@ -41,5 +41,11 @@ public class ExamController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/{examId}/results")
+    public ResponseEntity<List<StudentExamResultDTO>> getExamResults(@PathVariable Long examId) {
+        List<StudentExamResultDTO> results = examService.getExamResults(examId);
+        return ResponseEntity.ok(results);
+    }
+
 
 }
